@@ -1,1 +1,227 @@
-<p>admin works!!!!!!</p>
+<mat-toolbar class="navbar-top">
+  <button mat-icon-button (click)="sidenav.toggle()" matTooltip="Menu">
+    <mat-icon class="text">menu</mat-icon>
+  </button>
+  <span class="text">ENILibrary</span>
+  <span class="toolbar-item-spacer"></span>
+  <button mat-icon-button matTooltip="Like">
+    <mat-icon class="text">favorite</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="Share">
+    <mat-icon class="text">share</mat-icon>
+  </button>
+  <button mat-icon-button matTooltip="Notifications">
+    <mat-icon class="text">notifications</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    matTooltip="My Account"
+    [matMenuTriggerFor]="userAccountMenu"
+  >
+    <mat-icon class="text">account_circle</mat-icon>
+  </button>
+  <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+    <button mat-menu-item routerLink="#">
+      <mat-icon>person</mat-icon><span>My Account</span>
+    </button>
+    <button mat-menu-item routerLink="#">
+      <mat-icon>settings</mat-icon><span>Settings</span>
+    </button>
+    <button mat-menu-item routerLink="#">
+      <mat-icon>help</mat-icon><span>Help</span>
+    </button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item routerLink="#">
+      <mat-icon>exit_to_app</mat-icon>Logout
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="app-container">
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    [class.mat-elevation-z4]="true"
+    class="app-sidenav"
+  >
+    <h1 class="title">Dashboad Admin</h1>
+    <mat-nav-list>
+      <mat-list-item routerLink="./">
+        <span>Dashboard</span>
+      </mat-list-item>
+      <mat-list-item routerLink="./tables">
+        <span>Students</span>
+      </mat-list-item>
+      <mat-list-item routerLink="./teachers">
+        <span>Teachers</span>
+      </mat-list-item>
+
+      <mat-expansion-panel [class.mat-elevation-z0]="true">
+        <mat-expansion-panel-header> Documents </mat-expansion-panel-header>
+        <mat-nav-list>
+          <button
+            mat-button
+            [matMenuTriggerFor]="languages"
+            style="width: 100%"
+          >
+            Informatique
+          </button>
+
+          <!--First level Menu-->
+          <mat-menu #languages="matMenu" xPosition="before">
+            <button mat-menu-item [matMenuTriggerFor]="frontend">Semester 1</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 2</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 3</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 4</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 5</button>
+          </mat-menu>
+
+          <!--Second level Menu-->
+
+          <mat-menu #frontend="matMenu">
+            <button mat-menu-item routerLink="./exams-info1">Examens</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+
+          <mat-menu #backend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+
+          <!-------------------------------------------------------------->
+          <button
+            mat-button
+            [matMenuTriggerFor]="languages"
+            style="width: 100%"
+          >
+            GSIL
+          </button>
+
+          <!--First level Menu-->
+          <mat-menu #languages="matMenu" xPosition="before">
+            <button mat-menu-item [matMenuTriggerFor]="frontend">Semester 1</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 2</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 3</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 4</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 5</button>
+          </mat-menu>
+
+          <!--Second level Menu-->
+
+          <mat-menu #frontend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+
+          <mat-menu #backend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+          <!-------------------------------------------------------------->
+          <button
+            mat-button
+            [matMenuTriggerFor]="languages"
+            style="width: 100%"
+          >
+            Mecatronique
+          </button>
+
+          <!--First level Menu-->
+          <mat-menu #languages="matMenu" xPosition="before">
+            <button mat-menu-item [matMenuTriggerFor]="frontend">Semester 1</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 2</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 3</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 4</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 5</button>
+          </mat-menu>
+
+          <!--Second level Menu-->
+
+          <mat-menu #frontend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+
+          <mat-menu #backend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+          <!-------------------------------------------------------------->
+          <button
+            mat-button
+            [matMenuTriggerFor]="languages"
+            style="width: 100%"
+          >
+            Infotronique
+          </button>
+
+          <!--First level Menu-->
+          <mat-menu #languages="matMenu" xPosition="before">
+            <button mat-menu-item [matMenuTriggerFor]="frontend">Semester 1</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 2</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 3</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 4</button>
+            <button mat-menu-item [matMenuTriggerFor]="backend">Semester 5</button>
+          </mat-menu>
+
+          <!--Second level Menu-->
+
+          <mat-menu #frontend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+
+          <mat-menu #backend="matMenu">
+            <button mat-menu-item>Examen</button>
+            <button mat-menu-item>Cours</button>
+            <button mat-menu-item>TD</button>
+          </mat-menu>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--
+     <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            Documents
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">New project...</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Sign out</a></li>
+            </ul>
+          </div>
+
+
+
+
+
+          <mat-accordion>
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          Documents
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-action-row class="">
+                        <button mat-button color="primary" class="collapse-item">Exams</button>
+                        <button mat-button color="primary" class="collapse-item">Exams</button>
+                        <button mat-button color="primary" class="collapse-item">Exams</button>
+                      </mat-action-row>
+                    </mat-expansion-panel>
+                  </mat-accordion>
+  -->

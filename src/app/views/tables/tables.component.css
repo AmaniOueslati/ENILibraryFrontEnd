@@ -1,0 +1,53 @@
+.content-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;}
+  
+  .navbar-form {
+    -webkit-text-size-adjust: 100%;
+    font-size: 1rem;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5em;
+    color: #3c4858;
+    font-weight: 300;
+    visibility: visible;
+    text-align: left;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    margin: 10px 0;
+    float: right;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    position: relative;
+    border: none;
+    box-shadow: none;
+  }
+  .card-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 550px;
+  }
+  .bmd-form-group {
+    float: right;
+  }
+  
+  .input-group.no-border {
+    border: none;
+  }
+  
+  .input-group.no-border input {
+    border: none;
+    outline: none;
+  }
+  
+  .btn.btn-white.btn-round.btn-just-icon {
+    background-color: #fff;
+    border: none;
+  }
+  
+  .btn.btn-white.btn-round.btn-just-icon:hover {
+    background-color: #f8f9fa;
+  }
+  

@@ -1,0 +1,43 @@
+.navbar-top{
+    background-color: #01033e;
+}
+
+.toolbar-item-spacer {
+    flex: 1 1 auto;
+}
+.text{
+    color: white;
+}
+
+.app-container {
+    height: 90%;
+    margin: 0;
+    background-color: FFAFA;
+}  
+.app-sidenav {
+    width: 230px;
+}
+.app-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+} 
+.title{
+    margin: 20px;
+    font-weight: 500;
+    font-size: 20px;
+    
+}
+.semester-dropdown {
+    position: relative;
+}
+
+.semester-dropdown .dropdown-icon {
+    position: absolute;
+    right: 0;
+}
+
+.semester-dropdown .mat-menu-panel {
+    float: right;
+}

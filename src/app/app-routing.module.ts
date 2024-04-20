@@ -6,7 +6,14 @@ import { ProfComponent } from './layouts/prof/prof.component';
 import { StudentComponent } from './layouts/student/student.component';
 
 const routes: Routes = [{path:'' , component:VisitorsComponent},
-  {path:'admin' , component:AdminComponent
+  {path:'admin' , component:AdminComponent,
+  children: [
+    { path: '', loadChildren: () => import('./views/dashboard-admin/dashboard-admin.module').then(m => m.DashboardAdminModule) },
+    { path: 'tables', loadChildren: () => import('./views/tables/tables.module').then(m => m.TablesModule) },
+    { path: 'teachers', loadChildren: () => import('./views/teachers-admin/teachers-admin.module').then(m => m.TeachersAdminModule) },
+    { path: 'exams-info1', loadChildren: () => import('./views/exams-info1-admin/exams-info1-admin.module').then(m => m.ExamsInfo1AdminModule) }
+
+  ]
   },{path:'prof' , component:ProfComponent},
   {path:'student', component:StudentComponent}
 ];
