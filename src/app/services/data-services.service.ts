@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/User'; // Assume you have a User model class
 import { HttpHeaders } from '@angular/common/http';
+import { Feedback } from '../models/Feedback';
 
 
 @Injectable({
@@ -34,6 +35,17 @@ export class UserService {
     return this.http.get<User[]>(`${this.apiUrl}/getuserfridrole/${roleId}`, httpOptions);
   }
 
+  getFeedbacks(): Observable<Feedback[]> {
+    const httpOptions = this.createHttpOptions();
+    return this.http.get<Feedback[]>(`${this.apiUrl}/feedback/all-with-user`, httpOptions);
+  }
+
+ 
+  deleteUser(id: number): Observable<string> {
+    const httpOptions = this.createHttpOptions();
+    return this.http.delete<string>(`${this.apiUrl}/del/${id}`,  httpOptions);
+  }
+  
   
   searchUsers(username: string): Observable<User[]> {
     const httpOptions = this.createHttpOptions();
@@ -54,6 +66,6 @@ export class UserService {
   // Hard-coded token for development purposes
   private getHardCodedToken(): string {
     // Replace 'YOUR_HARD_CODED_TOKEN_HERE' with your actual token
-    return 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWxtYSIsImlhdCI6MTcxMzYzMDA0NSwiZXhwIjoxNzEzNzE2NDQ1fQ.FJr-KOMFEXZw82Ie6q1ncSAvtqkwf3YquMpem_k1AALea-KH7e-5hHfqUvY7pvUOTFTFg5dSBtVMwRKURsAOqw';
+    return 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWxtYSIsImlhdCI6MTcxMzcyNDEyMSwiZXhwIjoxNzEzODEwNTIxfQ.v078eck1mdif4e1o8ISg5oRWKuvdOgrrTi_-9BCfYANJ7TkeYS16ojCjT_zQjtZXgf01-SVlP17CSuvI7BBl8g';
   }
 }

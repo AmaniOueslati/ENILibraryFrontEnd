@@ -38,7 +38,6 @@ import { AddFormModule } from '../views/add-form/add-form.module';
   ],
   imports: [
     CommonModule,
-    RouterModule,
     TablesModule,
     TeachersAdminModule,
     DashboardAdminModule,
