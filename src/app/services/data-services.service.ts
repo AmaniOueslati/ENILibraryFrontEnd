@@ -2,7 +2,7 @@
 import { Injectable , Inject, forwardRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../models/User'; // Assume you have a User model class
+import { User } from '../models/user'; // Assume you have a User model class
 import { HttpHeaders } from '@angular/common/http';
 import { TokenService } from './token.service';
 
