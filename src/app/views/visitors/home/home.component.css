@@ -1,0 +1,5 @@
+:host {
+    background-color:#e6e4f1; /* Changez la couleur comme vous voulez */
+    display: block; /* Assurez-vous que le composant prend l'espace requis */
+    min-height: 100vh; /* Pour que le composant prenne toute la hauteur de la page */
+  }

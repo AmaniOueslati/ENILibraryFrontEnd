@@ -1,0 +1,135 @@
+<!--<div class="container mt-3 " >
+    <div class="card ml-auto" style="width: 370px;">
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container mt-3 " >
+    <div class="card ml-auto" style="width: 370px;"> 
+      <div class="card-header">
+        Featured
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First</th>
+              <th scope="col">Last</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td colspan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+-->
+<!--<div *ngFor="let matiere of matieres">
+  <h2>{{ matiere.subjectname }}</h2>
+  <ul>
+    <li *ngFor="let doc of matiere.resources">
+      <a target="_blank">{{ doc.docName }}</a> 
+      <p>Type: {{ doc.docType }}</p>
+      <p>Catégorie: {{ doc.documentCategory }}</p>
+      <p>Catégorie: {{ doc.docType }}</p> 
+      <p><button class="btn btn-light" (click)="downloadFile(doc.id)">Télécharger</button></p> 
+    </li>
+  </ul>
+</div>-->
+<!-- Crée une conteneur pour les cartes -->
+
+
+<div>
+  <div  class="shadow p-3 mb-5 bg-white rounded">
+    <h1>Génie informatique semestre 1</h1>
+  </div>
+<div class= "container  d-flex justify-content-center ">
+  <div class="d-flex flex-column"> 
+ 
+    <div *ngFor="let matiere of matieres" class="card m-2" style="width: 600px;"> 
+      <div class="card-header">
+        {{ matiere.subjectname }}
+      </div>
+      
+
+      <div class="table-responsive "> 
+        <table class="table"> 
+          <thead>
+            <tr>
+              <th scope="col">Nom</th> 
+              <th scope="col">Type</th> 
+              <th scope="col">Catégorie</th> 
+              <th scope="col">Télécharger</th> 
+            </tr>
+          </thead>
+          
+          <tbody>
+      
+            <tr *ngFor="let doc of matiere.resources"> 
+              <td>{{ doc.docName }}</td> 
+              <td>{{ doc.docType }}</td> 
+              <td>{{ doc.documentCategory }}</td> 
+              <td>
+                <button class="btn btn-link" (click)="downloadFile(doc.id)">Télécharger</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

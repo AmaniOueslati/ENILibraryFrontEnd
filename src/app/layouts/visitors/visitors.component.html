@@ -1,81 +1,201 @@
-<!-- my-component.component.html -->
-
 <style>
-    .navbar {
-        background-color: transparent !important;
-        position: relative;
-        height: 160px;
-    }
-  
-    .navbar .navbar-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensure the image covers the entire space */
-        z-index: -1; /* Send the image behind the navbar content */
-    }
+    /* .navbar {
+         background-color: transparent !important;
+         position: relative;
+         height: 160px;
+     }*/
+   
+     .navbar .navbar-image {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         object-fit: cover; /* Ensure the image covers the entire space */
+         z-index: -1; /* Send the image behind the navbar content */
+     }
+ 
+     .topmenu {
+         background-color: #13055F; /* Royal blue background color */
+         padding: 2px 0; /* Adjust padding as needed */
+         text-align: right; /* Align menu items to the right */
+     }
+ 
+     .topmenu ul {
+         list-style: none;
+         margin: 0;
+         padding: 0;
+     }
+ 
+     .topmenu ul li {
+         display: inline-block;
+         margin-right: 20px; /* Adjust spacing between menu items */
+     }
+ 
+     .topmenu ul li:last-child {
+         margin-right: 0; /* Remove margin from last item */
+     }
+ 
+     .topmenu ul li a {
+         color: #fff; /* White text color */
+         text-decoration: none;
+         font-size: 10px;
+     }
+ 
+     .topmenu ul li a:hover {
+         color: #ff0; /* Yellow text color on hover */
+     }
+ 
+     .topSociau a {
+         color: #fff; /* White color for social icons */
+         margin-right: 10px; /* Adjust spacing between social icons */
+     }
+ 
+     .topmenu ul li.separator {
+         color: #fff; /* White color for the separator */
+         margin: 0 5px; /* Adjust spacing around the separator */
+     }
+ 
+     .topmenu ul li {
+         display: inline-block;
+         margin: 0 10px; /* Adjust margin for menu items */
+     }
+ 
+     .navbar {
+         background-color: transparent !important;
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100px; /* Set the height of the navbar */
+         z-index: 2; /* Ensure the navbar appears above the image */
+     }
+   
+     .image-container {
+         position: relative;
+         height: 180px; /* Increase the height of the image container */
+         overflow: hidden; /* Ensure the image container clips the image overflow */
+         z-index: 1; /* Set a lower z-index for the image */
+     }
+   
+     .image-container img {
+         position: absolute;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: auto;
+         object-fit: cover;
+     }
+ 
+     .navbar .nav-link {
+    position: relative; /* Ensure the z-index works */
+    z-index: 2; /* Set a higher z-index than the image */
+}
 
-    
-  </style>
-  <header>
+/* Adjusted CSS for hover effect */
+.navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(243, 248, 251, 0.862); /* Change the color on hover as desired */
+}
+ </style>
+ 
+ <header>
     <div class="topmenu">
         <ul>
             <li><a href="/fr/docs">Documents</a></li>
+            <li class="separator">|</li> <!-- Add pipe separator -->
             <li><a href="/fr/dates">Agenda</a></li>
+            <li class="separator">|</li> <!-- Add pipe separator -->
             <li><a href="/fr/contact">Contact</a></li>
             <li class="topSociau">
-                <a href="https://www.facebook.com/Ecole-Nationale-dIng%C3%A9nieurs-de-Carthage-ENICarthage-532762086862252/?ref=bookmarks" target="_blank"><i class="fa fa-facebook"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
+                <a href="https://www.facebook.com/Ecole-Nationale-dIng%C3%A9nieurs-de-Carthage-ENICarthage-532762086862252/?ref=bookmarks" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a> <!-- Corrected class name -->
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a> <!-- Corrected class name -->
+                <a href="mailto:example@example.com"><i class="fa fa-envelope"></i></a> <!-- Add email icon with mailto link -->
             </li>
-            <li class="liSearch"><a href="#" class="search"><img src="/assets/images/search.png"
-                                                                 alt="EniCarthage"></a></li>
-                            <li><a href="/fr/change">EN</a></li>
-                    </ul>
+        </ul>
     </div>
-  </header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container"> <!-- Ensure the container wraps the navbar content -->
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
+</header>
+
+<div class="image-container">
+    <img src="assets/images/enicarpic.jpg" style="opacity: 0.6;" alt="My Image"> 
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">
+        <span style="font-size: larger; color: black; margin-left: 10px;">Eni</span>
+        <span style="font-size: larger; font-weight: bold; color: #13055F;">Library</span>
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="" style="margin-left: 10px;">Home</a>
+            </li>
+            <!--<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Bibliothéque
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" routerLink="/informatique">Informatique</a>
+                    <a class="dropdown-item" href="#">Mecatronique</a>
+                    <a class="dropdown-item" href="#">Infotronique</a>
+                    <a class="dropdown-item" href="#">Indus</a> 
+                </div>
+            </li>-->
+          
+          
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+        </ul>
+
+
+        <li class="nav-item active">
+            <button mat-button [matMenuTriggerFor]="languages">Bébliothéque</button>
+ 
+       
+
+     <mat-menu #languages="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="informatique" (click)="saveSection('Informatique')">Informatique</button>
+      <button mat-menu-item [matMenuTriggerFor]="mecatronique" (click)="saveSection('Mecatronique')">Mecatronique</button>
+     </mat-menu>
+
   
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                      </a>
-                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                      </div>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link disabled" href="#">Disabled</a>
-                  </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-          </div>
-      </div>
-      <img class="navbar-image" src="assets/images/enicar3.PNG" alt="My Image">
-  </nav>
+
+     <mat-menu #informatique="matMenu">      
+      <button mat-menu-item routerLink="/informatiqueS1" >semestre 1</button>
+      <button mat-menu-item >Semestre 2</button>
+      <button mat-menu-item >semestre 3</button>
+      <button mat-menu-item >semestre 4</button>
+      <button mat-menu-item >semestre 5</button>
+
+
+     </mat-menu>
+     <mat-menu #mecatronique="matMenu">      
+        <button mat-menu-item >semestre 1</button>
+        <button mat-menu-item>semestre 2</button>
+        <button mat-menu-item>semestre 3</button>
+        <button mat-menu-item>semestre 4</button>
+        <button mat-menu-item>semestre 5</button>
   
   
+       </mat-menu>
+     </li>
+
+
+
+
+        <ul class="navbar-nav ml-auto"> <!-- Moved Sign In button to the right -->
+            <li class="nav-item active">
+                <button mat-stroked-button routerLink="/login" class="nav-link">Sign In</button>
+            </li>
+        </ul>
+
+    
+    
+    </div>
+</nav>
+<router-outlet></router-outlet>
