@@ -22,6 +22,8 @@ import { ExamsInfo1AdminModule } from '../views/exams-info1-admin/exams-info1-ad
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatCardModule } from "@angular/material/card";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { AddFormModule } from '../views/add-form/add-form.module';
+
 
 
 
@@ -52,6 +54,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatMenuModule,
     RouterModule,
     MatExpansionModule,
+
+    
     
    ]
 })

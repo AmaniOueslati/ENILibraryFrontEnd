@@ -51,3 +51,10 @@
     background-color: #f8f9fa;
   }
   
+
+  .form-container{
+    width: 70%;
+    float: right;
+    height: 50%;
+    background-color: red;
+  }

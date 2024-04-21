@@ -1,0 +1,13 @@
+.container{
+    width: 50%;
+   
+}
+
+.form-group{
+    margin: 20px;
+    
+}
+
+.form-control::placeholder {
+    color: #bcbcbcab; 
+}

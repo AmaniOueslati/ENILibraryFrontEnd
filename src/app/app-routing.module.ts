@@ -11,7 +11,9 @@ const routes: Routes = [{path:'' , component:VisitorsComponent},
     { path: '', loadChildren: () => import('./views/dashboard-admin/dashboard-admin.module').then(m => m.DashboardAdminModule) },
     { path: 'tables', loadChildren: () => import('./views/tables/tables.module').then(m => m.TablesModule) },
     { path: 'teachers', loadChildren: () => import('./views/teachers-admin/teachers-admin.module').then(m => m.TeachersAdminModule) },
-    { path: 'exams-info1', loadChildren: () => import('./views/exams-info1-admin/exams-info1-admin.module').then(m => m.ExamsInfo1AdminModule) }
+    { path: 'exams-info1', loadChildren: () => import('./views/exams-info1-admin/exams-info1-admin.module').then(m => m.ExamsInfo1AdminModule) },
+    { path: 'add-form', loadChildren: () => import('./views/add-form/add-form.module').then(m => m.AddFormModule) }
+
 
   ]
   },{path:'prof' , component:ProfComponent},

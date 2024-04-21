@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { TeachersAdminComponent } from './teachers-admin.component';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule here
 
 
 const routes: Routes = [
@@ -13,7 +15,7 @@ const routes: Routes = [
   declarations: [
     TeachersAdminComponent
   ],
-  imports:[RouterModule.forChild(routes)],
+  imports:[RouterModule.forChild(routes), CommonModule,ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class TeachersAdminModule { }
