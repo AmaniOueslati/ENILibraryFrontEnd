@@ -37,6 +37,11 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.adresse}}</td>
+                    <td>
+                      <button mat-icon-button (click)="deleteUser(user.iduser)" aria-label="Delete user">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                    </td>
                   </tr>
                  
                 </tbody>

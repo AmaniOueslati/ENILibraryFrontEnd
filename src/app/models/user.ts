@@ -5,7 +5,7 @@ export class User {
     email?: string;
     password?: string;
     adresse?: string;
-    listroles!: Role[];
+    roles!: Role[];
     enabled?: true | false;
     emailValide?: true | false;
     authorities?: any[];

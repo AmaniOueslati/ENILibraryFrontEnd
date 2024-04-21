@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { User } from '../../models/User';
+import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 import { UserService } from 'src/app/services/data-services.service';
 
 @Component({
@@ -8,8 +9,13 @@ import { UserService } from 'src/app/services/data-services.service';
   styleUrls: ['./tables.component.css']
 })
 export class TablesComponent {
+
+
+
+
+
   users: User[] = [];
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   search(name: string): void {
     this.userService.searchUsers(name).subscribe({
@@ -41,4 +47,21 @@ export class TablesComponent {
   
 
 
-}}
+}
+
+deleteUser(id: number): void {
+  this.userService.deleteUser(id).subscribe({
+    next: (response) => {
+      console.log('Response:', response); // This will log "user successfully deleted !!"
+      this.users = this.users.filter(user => user.iduser !== id);  // Update the local data
+    },
+    error: (error) => {
+      console.error('There was an error deleting the user', error);
+    }
+  });
+}
+
+
+
+}
+

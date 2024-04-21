@@ -125,49 +125,42 @@
     </div>
     </div>
     <div class="row">
-    <div class="col-md-4">
-    <div class="card ">
-    <div class="card-header ">
-    <h5 class="card-title">Email Statistics</h5>
-    <p class="card-category">Last Campaign Performance</p>
-    </div>
-    <div class="card-body "><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-    <canvas id="chartEmail" width="1406" height="702" style="display: block; width: 703px; height: 351px;" class="chartjs-render-monitor"></canvas>
-    </div>
-    <div class="card-footer ">
-    <div class="legend">
-    <i class="fa fa-circle text-primary"></i> Opened
-    <i class="fa fa-circle text-warning"></i> Read
-    <i class="fa fa-circle text-danger"></i> Deleted
-    <i class="fa fa-circle text-gray"></i> Unopened
-    </div>
-    <hr>
-    <div class="stats">
-    <i class="fa fa-calendar"></i> Number of emails sent
-    </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-8">
-    <div class="card card-chart">
-    <div class="card-header">
-    <h5 class="card-title">NASDAQ: AAPL</h5>
-    <p class="card-category">Line Chart with Points</p>
-    </div>
-    <div class="card-body"><div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-    <canvas id="speedChart" width="1406" height="350" class="chartjs-render-monitor" style="display: block; width: 703px; height: 175px;"></canvas>
-    </div>
-    <div class="card-footer">
-    <div class="chart-legend">
-    <i class="fa fa-circle text-info"></i> Tesla Model S
-    <i class="fa fa-circle text-warning"></i> BMW 5 Series
-    </div>
-    <hr>
-    <div class="card-stats">
-    <i class="fa fa-check"></i> Data information certified
+        <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header ">
+                <h5 class="card-title">Feedbacks</h5>
+                </div>
+        <div class="card-feedback">
+            <div *ngIf="feedbacks.length > 0; else noFeedback">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>User ID</th>
+                      <th>Message</th>
+                      <th>Rating</th>
+                      <th>Created At</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let feedback of feedbacks">
+                      <td>{{ feedback.feedbackId }}</td>
+                      <td>{{ feedback.userId }}</td>
+                      <td>{{ feedback.message }}</td>
+                      <td>{{ feedback.rating }}</td>
+                      <td>{{ feedback.createdAt | date: 'MM/dd/yyyy' }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ng-template #noFeedback><p>No feedbacks found.</p></ng-template>
+    
+    
+    
+    
+            </div>
+        </div>
     </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
+
+    
