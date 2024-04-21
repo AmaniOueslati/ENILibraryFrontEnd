@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/User'; // Assume you have a User model class
 import { HttpHeaders } from '@angular/common/http';
+import { TokenService } from './token.service';
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class UserService {
 
 
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
    // Retrieve all users
    getUsers(): Observable<User[]> {
@@ -43,17 +44,12 @@ export class UserService {
 
    // Helper method to create HTTP options with headers
    private createHttpOptions(): { headers: HttpHeaders } {
+    const token = this.tokenService.currentToken();
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.getHardCodedToken()}`  // Use the hard-coded token
+        'Authorization': token ? `Bearer ${token}` : ''
       })
     };
-  }
-
-  // Hard-coded token for development purposes
-  private getHardCodedToken(): string {
-    // Replace 'YOUR_HARD_CODED_TOKEN_HERE' with your actual token
-    return 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYWxtYSIsImlhdCI6MTcxMzYzMDA0NSwiZXhwIjoxNzEzNzE2NDQ1fQ.FJr-KOMFEXZw82Ie6q1ncSAvtqkwf3YquMpem_k1AALea-KH7e-5hHfqUvY7pvUOTFTFg5dSBtVMwRKURsAOqw';
   }
 }

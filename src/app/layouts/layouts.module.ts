@@ -26,6 +26,7 @@ import { AddFormModule } from '../views/add-form/add-form.module';
 
 
 
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -55,8 +56,8 @@ import { AddFormModule } from '../views/add-form/add-form.module';
     RouterModule,
     MatExpansionModule,
 
-    
-    
-   ]
+    ReactiveFormsModule,
+    FormsModule
+  ]
 })
 export class LayoutsModule { }
