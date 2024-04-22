@@ -41,7 +41,7 @@ export class UserService {
     const httpOptions = this.createHttpOptions();
     return this.http.get<User[]>(`${this.apiUrl}/getuserfridrole/${roleId}`, httpOptions);
   }
-
+    
   getFeedbacks(): Observable<Feedback[]> {
     return this.http.get<Feedback[]>(`${this.apiUrl}/feedback/all-with-user`, {
       headers: new HttpHeaders({
