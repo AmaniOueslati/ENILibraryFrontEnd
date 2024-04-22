@@ -6,6 +6,7 @@ import { Role, User} from '../models/user';
 import { TokenService } from "./token.service";
 import { UserService } from "./user.service";
 import {  catchError, throwError } from 'rxjs';
+import { Router } from "@angular/router";
 
 
 export interface LoginResponse {
@@ -33,7 +34,8 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private tokenService: TokenService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   private user = new BehaviorSubject<User>(new User());
@@ -91,11 +93,13 @@ private handleAuthentication(token: string, response: LoginResponse): void {
   }));
 }
 
-logOut() {
-  this.tokenService.logOut();
-  this.nextUser(new User());
+logOut(): void {
+  // Assuming you store the token in localStorage
+  localStorage.removeItem('token');
+  localStorage.removeItem('user');
+  // Redirect to login page
+  this.router.navigate(['/login']);
 }
-
 
 isLoggedIn(): boolean {
   // Implementation might check for a valid JWT token or a login flag in localStorage

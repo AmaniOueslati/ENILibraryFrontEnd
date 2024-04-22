@@ -20,10 +20,15 @@ export class UserService {
 
   constructor(private http: HttpClient, private tokenService: TokenService) {}
 
+
+
    // Retrieve all users
    getUsers(): Observable<User[]> {
-    const httpOptions = this.createHttpOptions();
-    return this.http.get<User[]>(`${this.apiUrl}/getallusers`, httpOptions);
+    return this.http.get<User[]>(`${this.apiUrl}/getallusers`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    });
   }
 
    // Add a new user
@@ -38,8 +43,11 @@ export class UserService {
   }
 
   getFeedbacks(): Observable<Feedback[]> {
-    const httpOptions = this.createHttpOptions();
-    return this.http.get<Feedback[]>(`${this.apiUrl}/feedback/all-with-user`, httpOptions);
+    return this.http.get<Feedback[]>(`${this.apiUrl}/feedback/all-with-user`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.getToken()}`
+      })
+    });
   }
 
  

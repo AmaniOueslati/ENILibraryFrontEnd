@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit{
     }*/
 
     
-    onSubmit(): void {
+   /* onSubmit(): void {
       this.formSubmitted = true;
       if (this.loginForm.valid) {
         this.loading = true;
@@ -92,12 +92,17 @@ export class LoginComponent implements OnInit{
         .subscribe({
           next: (response) => {
             console.log('Logged in successfully', response);
+            console.log('Roles received:', response.roles);
             if (response && response.roles) {
-              if (response.roles.some(role => role.rolename === 'ROLE_ADMIN')) {
+              const roles:string[] = response.roles;
+              //if (response && response.roles && response.roles.some(roles => roles.rolename == 'ROLE_ADMIN')) {
+              if (response && response.roles && roles.includes('ROLE_ADMIN ')) {
+                console.log('Redirecting to admin dashboard');
                 this.router.navigate(['/admin']);
-              } else if(response.roles.some(role => role.rolename === 'ROLE_ADMIN')) {
+              } else if(response.roles.some(role => role.rolename === 'ROLE_PROF')) {
+              
                 this.router.navigate(['/prof']);
-              } else if (response.roles.some(role => role.rolename === 'ROLE_ADMIN')){
+              } else if (response.roles.some(role => role.rolename === 'ROLE_ETUDIENT')){
                 this.router.navigate(['/tables']);
               }
             } else {
@@ -112,7 +117,46 @@ export class LoginComponent implements OnInit{
             }
           });
       }
+    }*/
+    onSubmit(): void {
+      this.formSubmitted = true;
+      if (this.loginForm.valid) {
+        this.loading = true;
+        this.authenticationService.logIn(this.formValues['username'].value, this.formValues['password'].value)
+          .subscribe({
+            next: (response) => {
+              console.log('Logged in successfully', response);
+              console.log('Roles received:', response.roles);
+              if (response && response.roles) {
+                response.roles.forEach(e => {
+                  console.log('e '+ e)
+                  if (e.toString() === 'ROLE_ADMIN'){
+                    console.log('yes');
+                    this.router.navigate(['/admin']);
+                  }else if (e.toString() === 'ROLE_PROF')  {
+                    this.router.navigate(['/prof']);
+
+                  }
+                else if (e.toString() === 'ROLE_ETUDIENT')  {
+                  this.router.navigate(['/tables']);
+                }
+                else {
+                  console.error('Unexpected response structure:', response);
+                }
+              });
+
+              } 
+              this.loading = false;
+            },
+            error: (error) => {
+              console.error('Login failed:', error);
+              this.error = "An unexpected error occurred. Please try again later.";
+              this.loading = false;
+            }
+          });
+      }
     }
+    
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const user = localStorage.getItem('user');
