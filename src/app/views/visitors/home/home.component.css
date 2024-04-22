@@ -1,5 +1,101 @@
 :host {
-    background-color:#e6e4f1; /* Changez la couleur comme vous voulez */
+    background-color:#d5d0ef; /* Changez la couleur comme vous voulez */
     display: block; /* Assurez-vous que le composant prend l'espace requis */
     min-height: 100vh; /* Pour que le composant prenne toute la hauteur de la page */
   }
+
+  /* Ajoute de l'espace entre les cartes */
+.card {
+  margin-bottom: 20px; /* Espacement entre les cartes */
+}
+
+/* Aligne les cartes horizontalement */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Alignement des cartes sur la largeur */
+}
+
+/* Styles pour agrandir l'image du carousel en plein écran */
+/* Styles pour agrandir l'image du carousel en plein écran et la centrer */
+/* Styles pour agrandir davantage l'image du carousel en plein écran et la centrer */
+.carousel {
+  position: relative;
+  width: 100vw;
+  margin: 10px;
+}
+
+.carousel-inner {
+  width: 100%;
+  height: 80vh;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.container.d-flex {
+  justify-content: space-between; /* Espacer les cartes également à l'intérieur du conteneur */
+  padding: 40;
+}
+
+.card {
+  width: 500px; /* Modifier la largeur des cartes */
+  /* Autres styles de carte */
+}
+
+/* Styles du bouton "Discover More" */
+/* Styles du bouton "Discover More" */
+/* Styles du bouton "Discover More" */
+.discover-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px 30px; /* Ajuster la taille du bouton */
+  background-color: #0000ff; /* Changer la couleur de fond en bleu */
+  color: white; /* Changer la couleur du texte en blanc */
+  border: none; /* Supprimer la bordure */
+  border-radius: 10px; /* Arrondir les coins */
+  text-decoration: none;
+  font-size: 18px; /* Changer la taille de la police */
+  font-family: Arial, sans-serif; /* Changer la police */
+  display: none; /* Caché par défaut */
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Animation de disparition */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Appliquer l'animation */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Appliquer l'animation de disparition */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Appliquer l'animation */
+.discover-btn.fade-in {
+  animation: fadeIn 1s forwards;
+}
+
+/* Appliquer l'animation de disparition */
+.discover-btn.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
