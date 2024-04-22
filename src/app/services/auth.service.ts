@@ -2,13 +2,18 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, map } from "rxjs";
 import { environment } from "src/app/environment/environment";
-import { Role, User } from '../models/User';
+import { Role, User} from '../models/user';
 import { TokenService } from "./token.service";
 import { UserService } from "./user.service";
 import {  catchError, throwError } from 'rxjs';
+
+
 export interface LoginResponse {
-  token: string;
-  user: User;
+  iduser: number;
+  username: string;
+  email: string;
+  roles: Role[];
+  jwt: string;
 }
 
 @Injectable({
@@ -58,31 +63,46 @@ export class AuthService {
   // enters User object
   // Return Token
   
-
-  public logIn(username: string, password: string): Observable<User> {
-    return this.httpClient.post<LoginResponse>(`${this.url}/signin`, { username, password })
-      .pipe(
-        map(response => {
-          console.log("Login response:", response); // Debugging output
-          this.handleAuthentication(response.token, response.user);
-          return response.user;
-        }),
-        catchError(error => {
-          console.error('Login error:', error);
-          return throwError(() => new Error('Failed to log in'));
-        })
-      );
+// AuthService method adjusted to handle new structure
+public logIn(username: string, password: string): Observable<User> {
+  return this.httpClient.post<LoginResponse>(`${this.url}/signin`, { username, password })
+    .pipe(
+      map(response => {
+        console.log("Login response:", response); // Debugging output
+        this.handleAuthentication(response.jwt, response);
+        return response; // Pass the entire response for further processing or just return a user object as needed
+      }),
+      catchError(error => {
+        console.error('Login error:', error);
+        throw error; // Rethrow or handle appropriately
+      })
+    );
   }
 
-    // Method to handle authentication after logging in
-    private handleAuthentication(token: string, user: User): void {
-      localStorage.setItem('token', token);
-      // Here you can also set the user data if needed:
-      localStorage.setItem('user', JSON.stringify(user));
-      // You might want to also dispatch an action to update your auth state in a store (e.g., ngrx or ngxs)
-    }
-  
-  
+
+
+private handleAuthentication(token: string, response: LoginResponse): void {
+  localStorage.setItem('token', token);
+  localStorage.setItem('user', JSON.stringify({
+    id: response.iduser,
+    username: response.username,
+    email: response.email,
+    roles: response.roles
+  }));
+}
+
+logOut() {
+  this.tokenService.logOut();
+  this.nextUser(new User());
+}
+
+
+isLoggedIn(): boolean {
+  // Implementation might check for a valid JWT token or a login flag in localStorage
+  const token = localStorage.getItem('token');
+  return !!token;  // Simple check if token exists
+}
+
   /*public logIn(
     username: string,
     password: string,
@@ -109,8 +129,5 @@ export class AuthService {
   // enters User object
   // Return Token
  
-  logOut() {
-    this.tokenService.logOut();
-    this.nextUser(new User());
-  }
+ 
 }

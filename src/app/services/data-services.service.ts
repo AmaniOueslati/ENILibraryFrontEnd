@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Feedback } from '../models/Feedback';
 import { TokenService } from './token.service';
-import { User } from '../models/User';
+import { User } from '../models/user';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 
 @Injectable({
@@ -75,4 +76,12 @@ export class UserService {
     // Assuming the token is stored in localStorage after login
     return localStorage.getItem('token') || '';
   }
+
+
+ 
+  
+
+
+
+
 }

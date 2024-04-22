@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
 import { environment } from "src/app/environment/environment.prod";
 import { TokenService } from "./token.service";
-import { Role, User } from "../models/User";
+import { User } from "../models/user";
 
 @Injectable({
   providedIn: "root",

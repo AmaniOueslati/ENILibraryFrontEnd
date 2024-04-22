@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+
+
+export interface LoginResponse {
+  token: string;
+  user: User;
+}
 
 @Component({
   selector: 'app-login',
@@ -11,7 +18,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit{
   loading: boolean = false;
-  returnUrl: string = '/student';
   
 
 
@@ -83,33 +89,46 @@ export class LoginComponent implements OnInit{
       if (this.loginForm.valid) {
         this.loading = true;
         this.authenticationService.logIn(this.formValues['username'].value, this.formValues['password'].value)
-          .subscribe(
-            (data: any) => {
-              console.log('Data received:', data); // Ajout du console.log ici
-              this.loading = false;
-              const roles:string[] = data.roles;
-              if (roles.includes('ROLE_ADMIN')){
-                  this.router.navigate(['/admin']);
-              }
-              else if (roles.includes('ROLE_PROF')){
+        .subscribe({
+          next: (response) => {
+            console.log('Logged in successfully', response);
+            if (response && response.roles) {
+              if (response.roles.some(role => role.rolename === 'ROLE_ADMIN')) {
+                this.router.navigate(['/admin']);
+              } else if(response.roles.some(role => role.rolename === 'ROLE_ADMIN')) {
                 this.router.navigate(['/prof']);
-            }
-            else if (roles.includes('ROLE_ETUDIENT')){
-              this.router.navigate(['/student']);
-          }
-            },
-            (error: any) => {
-              console.log(error);
-              if (error.status === 400) {
-                this.error = "Bad credentials";
-              } else {
-                this.error = "An unexpected error occurred. Please try again later.";
+              } else if (response.roles.some(role => role.rolename === 'ROLE_ADMIN')){
+                this.router.navigate(['/tables']);
               }
+            } else {
+              console.error('Unexpected response structure:', response);
+            }
+            this.loading = false;
+          },
+            error: (error) => {
+              console.error('Login failed:', error);
+              this.error = "An unexpected error occurred. Please try again later.";
               this.loading = false;
             }
-          );
+          });
       }
     }
+
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      if (parsedUser.roles.includes('ROLE_ADMIN')) {
+        return true;
+      }
+    }
+    
+    this.router.navigate(['/login']);
+    return false;
+  }
+
+  
+    
     
     
   }

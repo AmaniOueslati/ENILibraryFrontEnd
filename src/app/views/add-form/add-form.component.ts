@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User'; // User model
 import { UserService } from '../../services/data-services.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormArray} from '@angular/forms';

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenService {
+export class TokenService{
 
   constructor() {
     this.nextToken(localStorage.getItem("token"));
@@ -41,4 +41,6 @@ export class TokenService {
     localStorage.removeItem('token');
     this.token.next(null);
   }
+
+    
 }

@@ -1,8 +1,8 @@
 import { Component,OnInit  } from '@angular/core';
-import { User } from 'src/app/models/User';
 import { FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/data-services.service';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-teachers-admin',
